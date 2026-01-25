@@ -13,27 +13,27 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       {
         id: 'rule_builtin_001',
         name: 'Remove Commas',
-        description: '숫자 사이의 쉼표를 제거합니다 (예: 1,000,000 → 1000000)',
+        description: 'Remove commas from numbers (e.g., 1,000,000 → 1000000)',
         findPattern: ',',
         replacePattern: '',
         isRegex: false,
-        isActive: true,
+        isActive: false,
         targetDomains: []
       },
       {
         id: 'rule_builtin_002',
         name: 'Trim Whitespace',
-        description: '앞뒤 공백을 제거합니다',
+        description: 'Remove leading and trailing whitespace',
         findPattern: '^\\s+|\\s+$',
         replacePattern: '',
         isRegex: true,
-        isActive: true,
+        isActive: false,
         targetDomains: []
       },
       {
         id: 'rule_builtin_003',
         name: 'Clean URL Parameters',
-        description: 'URL에서 파라미터를 제거합니다',
+        description: 'Remove query parameters from URLs',
         findPattern: '\\?.*$',
         replacePattern: '',
         isRegex: true,
