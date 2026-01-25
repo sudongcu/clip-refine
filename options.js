@@ -99,7 +99,7 @@ function displayRules() {
                 </div>
               </td>
               <td class="px-6 py-5">
-                <code class="bg-background-light dark:bg-[#2d2344] px-2 py-1 rounded text-[#5A2EB0] dark:text-[#a389d4] text-xs font-mono border border-primary/10">${escapeHtml(rule.findPattern)}</code>
+                <code class="bg-background-light dark:bg-[#2d2344] px-2 py-1 rounded text-[#6B40C8] dark:text-[#a389d4] text-xs font-mono border border-primary/10">${escapeHtml(rule.findPattern)}</code>
               </td>
               <td class="px-6 py-5">
                 ${rule.replacePattern ? `<code class="bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded text-green-600 dark:text-green-400 text-xs font-mono border border-green-200 dark:border-green-800">${escapeHtml(rule.replacePattern)}</code>` : '<span class="text-gray-400 dark:text-gray-600 text-sm italic">—</span>'}
