@@ -43,7 +43,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     ];
 
     // Save to storage
-    await chrome.storage.sync.set({}
+    await chrome.storage.sync.set({
       settings: defaultSettings,
       rules: defaultRules
     });
