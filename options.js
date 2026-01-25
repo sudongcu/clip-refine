@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
 });
 
-// 이벤트 리스너 설정
+// Setup event listeners
 function setupEventListeners() {
-  // 토스트 설정
+  // Toast settings
   document.getElementById('showToast').addEventListener('change', saveSettings);
 
   // 규칙 추가 버튼
@@ -37,21 +37,21 @@ function setupEventListeners() {
   document.getElementById('importFile').addEventListener('change', importRules);
 }
 
-// 설정 로드
+// Load settings
 async function loadSettings() {
   const data = await chrome.storage.sync.get(['settings', 'rules']);
   
-  // 토스트 설정
+  // Toast settings
   if (data.settings) {
     document.getElementById('showToast').checked = data.settings.showToast !== false;
   }
 
-  // 규칙 목록
+  // Rules list
   rules = data.rules || [];
   displayRules();
 }
 
-// 설정 저장
+// Save settings
 async function saveSettings() {
   const showToast = document.getElementById('showToast').checked;
   
@@ -63,7 +63,7 @@ async function saveSettings() {
   showNotification('Settings saved');
 }
 
-// 규칙 표시
+// Display rules
 function displayRules() {
   const container = document.getElementById('rulesList');
   
@@ -140,7 +140,7 @@ function displayRules() {
   });
 }
 
-// 모달 열기
+// Open modal
 function openModal(rule = null) {
   editingRuleId = rule ? rule.id : null;
   
@@ -170,13 +170,13 @@ function openModal(rule = null) {
   modal.style.display = 'flex';
 }
 
-// 모달 닫기
+// Close modal
 function closeModal() {
   document.getElementById('ruleModal').style.display = 'none';
   editingRuleId = null;
 }
 
-// 규칙 저장
+// Save rule
 async function saveRule() {
   const name = document.getElementById('ruleName').value.trim();
   const description = document.getElementById('ruleDescription').value.trim();
@@ -191,7 +191,7 @@ async function saveRule() {
     return;
   }
 
-  // 정규식 검증
+  // Validate regex
   if (isRegex) {
     try {
       new RegExp(findPattern);
@@ -217,13 +217,13 @@ async function saveRule() {
   };
 
   if (editingRuleId) {
-    // 편집
+    // Edit
     const index = rules.findIndex(r => r.id === editingRuleId);
     if (index !== -1) {
       rules[index] = rule;
     }
   } else {
-    // 추가
+    // Add
     rules.push(rule);
   }
 
@@ -233,7 +233,7 @@ async function saveRule() {
   showNotification('Rule saved successfully');
 }
 
-// 규칙 토글
+// Toggle rule
 async function toggleRule(ruleId) {
   const rule = rules.find(r => r.id === ruleId);
   if (rule) {
@@ -244,7 +244,7 @@ async function toggleRule(ruleId) {
   }
 }
 
-// 규칙 편집
+// Edit rule
 function editRule(ruleId) {
   const rule = rules.find(r => r.id === ruleId);
   if (rule) {
@@ -252,7 +252,7 @@ function editRule(ruleId) {
   }
 }
 
-// 규칙 삭제
+// Delete rule
 async function deleteRule(ruleId) {
   if (!confirm('Are you sure you want to delete this rule?')) {
     return;
@@ -264,7 +264,7 @@ async function deleteRule(ruleId) {
   showNotification('Rule deleted');
 }
 
-// 규칙 내보내기
+// Export rules
 function exportRules() {
   const dataStr = JSON.stringify(rules, null, 2);
   const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -277,7 +277,7 @@ function exportRules() {
   showNotification('Rules exported successfully');
 }
 
-// 규칙 가져오기
+// Import rules
 function importRules(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -292,7 +292,7 @@ function importRules(event) {
         return;
       }
 
-      // 기존 규칙과 병합 (ID 중복 방지)
+      // Merge with existing rules (prevent ID duplicates)
       const existingIds = new Set(rules.map(r => r.id));
       const newRules = importedRules.filter(r => !existingIds.has(r.id));
       
@@ -305,10 +305,10 @@ function importRules(event) {
     }
   };
   reader.readAsText(file);
-  event.target.value = ''; // 파일 선택 초기화
+  event.target.value = ''; // Reset file input
 }
 
-// 알림 표시
+// Show notification
 function showNotification(message) {
   const notification = document.createElement('div');
   notification.className = 'fixed top-5 right-5 bg-[#333] text-white px-5 py-3 rounded-lg shadow-lg z-[10000] transition-all duration-300';

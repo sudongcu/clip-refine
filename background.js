@@ -1,14 +1,14 @@
 // Background service worker
-// 초기 설치 시 기본 설정 및 규칙 생성
+// Create default settings and rules on initial installation
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === 'install') {
-    // 기본 설정
+    // Default settings
     const defaultSettings = {
       isGlobalActive: true,
       showToast: true
     };
 
-    // 기본 규칙 (MVP 프리셋)
+    // Default rules (MVP preset)
     const defaultRules = [
       {
         id: 'rule_builtin_001',
@@ -42,8 +42,8 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       }
     ];
 
-    // 스토리지에 저장
-    await chrome.storage.sync.set({
+    // Save to storage
+    await chrome.storage.sync.set({}
       settings: defaultSettings,
       rules: defaultRules
     });
@@ -52,13 +52,13 @@ chrome.runtime.onInstalled.addListener(async (details) => {
   }
 });
 
-// 메시지 리스너 (필요한 경우 확장)
+// Message listener (extend as needed)
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getRules') {
     chrome.storage.sync.get(['rules'], (data) => {
       sendResponse({ rules: data.rules || [] });
     });
-    return true; // 비동기 응답
+    return true; // Async response
   }
 
   if (request.action === 'saveRules') {
@@ -69,7 +69,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-// 아이콘 상태 업데이트 (활성/비활성)
+// Update icon state (active/inactive)
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === 'sync' && changes.settings) {
     const isActive = changes.settings.newValue?.isGlobalActive;
@@ -77,9 +77,9 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
 });
 
-// 아이콘 업데이트 함수
+// Update icon function
 function updateIcon(isActive) {
-  // 실제 아이콘 파일이 있을 때 활성화
+  // Activate when actual icon files exist
   // chrome.action.setIcon({
   //   path: {
   //     16: isActive ? 'icons/icon16.png' : 'icons/icon16-disabled.png',
@@ -89,7 +89,7 @@ function updateIcon(isActive) {
   // });
 }
 
-// 초기 아이콘 설정
+// Initial icon setup
 chrome.storage.sync.get(['settings'], (data) => {
   const isActive = data.settings?.isGlobalActive !== false;
   updateIcon(isActive);

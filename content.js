@@ -1,4 +1,4 @@
-// Content script - 클립보드 이벤트 가로채기
+// Content script - Intercept clipboard events
 console.log('ClipRefine: Content script loaded on', window.location.href);
 
 let isActive = true;
@@ -52,7 +52,7 @@ document.addEventListener('copy', (event) => {
     // 현재 도메인
     const currentDomain = window.location.hostname;
 
-    // 활성화된 규칙 필터링 및 적용
+    // Filter and apply active rules
     const activeRules = rules.filter(rule => {
       if (!rule.isActive) return false;
       
@@ -68,7 +68,7 @@ document.addEventListener('copy', (event) => {
     
     console.log('ClipRefine: Active rules:', activeRules.length, activeRules);
 
-    // 규칙 순차 적용
+    // Apply rules sequentially
     let processedText = text;
     activeRules.forEach(rule => {
       const before = processedText;
@@ -91,9 +91,9 @@ document.addEventListener('copy', (event) => {
       event.preventDefault();
       event.clipboardData.setData('text/plain', processedText);
       
-      // 토스트 알림 표시 (설정된 경우)
+      // Show toast notification (if enabled)
       if (showToastSetting) {
-        showToast('ClipRefine: 텍스트가 변환되었습니다');
+        showToast('ClipRefine: Text refined successfully');
       }
     }
   } catch (error) {

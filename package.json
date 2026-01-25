@@ -1,7 +1,7 @@
 {
   "name": "copy-refine",
   "version": "1.0.0",
-  "description": "ClipFlow는 복사 시 텍스트를 자동으로 가공하는 크롬 확장 프로그램입니다.",
+  "description": "ClipRefine is a Chrome extension that automatically processes text when copying.",
   "main": "background.js",
   "scripts": {
     "build:css": "tailwindcss -i ./src/input.css -o ./styles.css --minify",

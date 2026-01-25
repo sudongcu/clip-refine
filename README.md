@@ -1,102 +1,101 @@
-# ClipFlow - 스마트 클립보드 매니저
+# ClipRefine - Smart Clipboard Manager
 
-ClipFlow는 복사 시 텍스트를 자동으로 가공하는 크롬 확장 프로그램입니다.
+ClipRefine is a Chrome extension that automatically processes text when copying.
 
-## 주요 기능
+## Key Features
 
-### MVP 기능
-- **전역 On/Off**: 확장 프로그램 아이콘을 클릭하여 전체 기능을 활성화/비활성화할 수 있습니다.
-- **기본 규칙**:
-  - Remove Commas: 숫자에서 쉼표 제거 (1,000,000 → 1000000)
-  - Trim Whitespace: 앞뒤 공백 제거
-  - Clean URL Parameters: URL 파라미터 제거
-- **커스텀 규칙**: 정규식(RegEx) 기반의 치환 규칙을 사용자가 직접 작성 가능
-- **토스트 알림**: 텍스트 변환 시 알림 표시
+### MVP Features
+- **Global On/Off**: Click the extension icon to enable/disable all functionality.
+- **Built-in Rules**:
+  - Remove Commas: Remove commas from numbers (1,000,000 → 1000000)
+  - Trim Whitespace: Remove leading and trailing whitespace
+  - Clean URL Parameters: Remove URL parameters
+- **Custom Rules**: Create your own replacement rules using RegEx patterns
+- **Toast Notifications**: Display notifications when text is transformed
 
-## 설치 방법
+## Installation
 
-1. Chrome 브라우저에서 `chrome://extensions/` 로 이동
-2. 우측 상단의 "개발자 모드" 활성화
-3. "압축해제된 확장 프로그램을 로드합니다" 클릭
-4. 이 폴더를 선택
+1. Navigate to `chrome://extensions/` in Chrome browser
+2. Enable "Developer mode" in the top right
+3. Click "Load unpacked"
+4. Select this folder
 
-## 사용 방법
+## Usage
 
-1. 확장 프로그램 아이콘을 클릭하여 활성화 상태 확인
-2. 원하는 규칙을 설정 페이지에서 활성화/추가
-3. 웹페이지에서 텍스트를 복사(`Ctrl+C`)하면 자동으로 규칙이 적용됨
+1. Click the extension icon to check activation status
+2. Enable/add rules in the settings page
+3. Copy text from any webpage (`Ctrl+C`) and rules will be automatically applied
 
-## 규칙 설정
+## Rule Configuration
 
-### 규칙 추가하기
-1. 확장 프로그램 아이콘 클릭
-2. "규칙 설정 열기" 버튼 클릭
-3. "새 규칙 추가" 버튼 클릭
-4. 규칙 정보 입력:
-   - 규칙 이름
-   - 설명 (선택사항)
-   - 찾을 패턴 (일반 텍스트 또는 정규식)
-   - 치환 텍스트
-   - 정규식 사용 여부
-   - 적용할 도메인 (선택사항)
-5. 저장
+### Adding Rules
+1. Click the extension icon
+2. Click "RULE SETTINGS" button
+3. Click "Add Rule" button
+4. Enter rule information:
+   - Rule name
+   - Description (optional)
+   - Find pattern (plain text or regex)
+   - Replacement text
+   - Enable regex
+   - Target domains (optional)
+5. Save
 
-### 정규식 예제
-- 숫자 콤마 제거: `[,]` → (빈 문자열)
-- URL 파라미터 제거: `\\?.*$` → (빈 문자열)
-- 공백 정리: `\\s+` → ` ` (단일 공백)
-- 특수문자 제거: `[^a-zA-Z0-9\\s]` → (빈 문자열)
+### Regex Examples
+- Remove number commas: `[,]` → (empty string)
+- Remove URL parameters: `\\?.*$` → (empty string)
+- Normalize whitespace: `\\s+` → ` ` (single space)
+- Remove special characters: `[^a-zA-Z0-9\\s]` → (empty string)
 
-## 규칙 공유
+## Rule Sharing
 
-### 내보내기
-1. 설정 페이지 하단의 "규칙 내보내기" 클릭
-2. JSON 파일이 다운로드됨
+### Export
+1. Click "Export Rules" at the bottom of settings page
+2. JSON file will be downloaded
 
-### 가져오기
-1. 설정 페이지 하단의 "규칙 가져오기" 클릭
-2. JSON 파일 선택
+### Import
+1. Click "Import Rules" at the bottom of settings page
+2. Select JSON file
 
-## 파일 구조
+## Project Structure
 
 ```
-copy-refine/
-├── manifest.json       # 확장 프로그램 설정
-├── background.js       # 백그라운드 서비스 워커
-├── content.js          # 콘텐츠 스크립트 (클립보드 인터셉트)
-├── popup.html          # 팝업 UI
-├── popup.js            # 팝업 로직
-├── popup.css           # 팝업 스타일
-├── options.html        # 설정 페이지 UI
-├── options.js          # 설정 페이지 로직
-├── options.css         # 설정 페이지 스타일
-├── icons/              # 확장 프로그램 아이콘
-│   └── icon.svg
-├── Claude.md           # 프로젝트 명세
-└── README.md           # 이 파일
+clip-refine/
+├── manifest.json       # Extension configuration
+├── background.js       # Background service worker
+├── content.js          # Content script (clipboard intercept)
+├── popup.html          # Popup UI
+├── popup.js            # Popup logic
+├── options.html        # Settings page UI
+├── options.js          # Settings page logic
+├── styles.css          # Styles
+├── icons/              # Extension icons
+└── README.md           # This file
 ```
 
-## 기술 스택
+## Tech Stack
 
-- **Manifest V3**: Chrome Extension 최신 버전
-- **Vanilla JavaScript**: 순수 자바스크립트 (ES6+)
-- **Chrome Storage API**: 사용자 설정 동기화
-- **Content Scripts**: 페이지 내 복사 이벤트 캡처
+- **Manifest V3**: Latest Chrome Extension version
+- **Vanilla JavaScript**: Pure JavaScript (ES6+)
+- **Chrome Storage API**: User settings synchronization
+- **Content Scripts**: Capture copy events within pages
 
-## 주의사항
+## Notes
 
-- 정규식 패턴은 신중하게 작성해야 합니다.
-- 잘못된 정규식은 텍스트를 예상치 못하게 변환할 수 있습니다.
-- 도메인별 설정을 사용하면 특정 사이트에서만 규칙이 작동합니다.
+- Regex patterns should be written carefully.
+- Incorrect regex may transform text unexpectedly.
+- Domain-specific settings make rules work only on certain sites.
 
-## 향후 계획
+## Future Plans
 
-- 규칙 체이닝 (여러 규칙을 순서대로 적용)
-- 컨텍스트 메뉴 통합 (우클릭으로 규칙 선택)
-- 규칙 테스트 기능
-- 통계 및 사용 기록
+- Rule chaining (apply multiple rules sequentially)
+- Context menu integration (select rules via right-click)
+- Rule testing functionality
+- Statistics and usage history
 
-## 라이선스
+## License
+
+MIT
 
 MIT License
 
