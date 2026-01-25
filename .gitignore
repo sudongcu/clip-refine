@@ -1,0 +1,14 @@
+# Build artifacts
+node_modules/
+styles.css
+
+# Development
+src/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
