@@ -1,62 +1,75 @@
 // Content script - Intercept clipboard events
-console.log('ClipRefine: Content script loaded on', window.location.href);
 
 let isActive = true;
 let showToastSetting = true;
+let showConsoleLog = false;
 let rules = [];
 let isLoaded = false;
 
-// 초기 설정 로드
+// Helper function for conditional logging
+function log(...args) {
+  if (showConsoleLog) {
+    console.log('ClipRefine:', ...args);
+  }
+}
+
+// Initial settings load
 chrome.storage.sync.get(['settings', 'rules'], (data) => {
   if (data.settings) {
     isActive = data.settings.isGlobalActive !== false;
     showToastSetting = data.settings.showToast !== false;
+    showConsoleLog = data.settings.showConsoleLog === true;
   }
   if (data.rules) {
     rules = data.rules;
-    console.log('ClipRefine: Loaded rules:', rules);
+    log('Loaded rules:', rules);
   } else {
-    console.log('ClipRefine: No rules found in storage');
+    log('No rules found in storage');
   }
   isLoaded = true;
+  log('Content script initialized. Console logging:', showConsoleLog ? 'ON' : 'OFF');
 });
 
-// 설정 변경 감지
+// Detect settings changes
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === 'sync') {
     if (changes.settings) {
-      isActive = changes.settings.newValue.isGlobalActive !== false;
-      showToastSetting = changes.settings.newValue.showToast !== false;
+      const newSettings = changes.settings.newValue;
+      isActive = newSettings.isGlobalActive !== false;
+      showToastSetting = newSettings.showToast !== false;
+      showConsoleLog = newSettings.showConsoleLog === true;
+      log('Settings updated. Console logging:', showConsoleLog ? 'ON' : 'OFF');
     }
     if (changes.rules) {
       rules = changes.rules.newValue || [];
+      log('Rules updated:', rules.length, 'rules');
     }
   }
 });
 
-// 복사 이벤트 리스너
+// Copy event listener
 document.addEventListener('copy', (event) => {
   if (!isActive) {
-    console.log('ClipRefine: Inactive');
+    log('Inactive');
     return;
   }
 
   try {
-    // 현재 선택된 텍스트 가져오기
+    // Get currently selected text
     const selection = window.getSelection();
     let text = selection.toString();
 
     if (!text) return;
-    console.log('ClipRefine: Original text:', text);
+    log('Original text:', text);
 
-    // 현재 도메인
+    // Current domain
     const currentDomain = window.location.hostname;
 
     // Filter and apply active rules
     const activeRules = rules.filter(rule => {
       if (!rule.isActive) return false;
       
-      // 도메인 필터링
+      // Domain filtering
       if (rule.targetDomains && rule.targetDomains.length > 0) {
         return rule.targetDomains.some(domain => 
           currentDomain.includes(domain)
@@ -66,7 +79,7 @@ document.addEventListener('copy', (event) => {
       return true;
     });
     
-    console.log('ClipRefine: Active rules:', activeRules.length, activeRules);
+    log('Active rules:', activeRules.length, activeRules);
 
     // Apply rules sequentially
     let processedText = text;
@@ -77,17 +90,17 @@ document.addEventListener('copy', (event) => {
           const regex = new RegExp(rule.findPattern, 'g');
           processedText = processedText.replace(regex, rule.replacePattern);
         } catch (e) {
-          console.error('ClipRefine: Invalid regex pattern', rule.findPattern, e);
+          log('Invalid regex pattern', rule.findPattern, e);
         }
       } else {
         processedText = processedText.replaceAll(rule.findPattern, rule.replacePattern);
       }
-      console.log(`ClipRefine: Rule "${rule.name}" - Before: "${before}" → After: "${processedText}"`);
+      log(`Rule "${rule.name}" - Before: "${before}" → After: "${processedText}"`);
     });
 
-    // 텍스트가 변경되었으면 클립보드에 새로운 값 설정
+    // If text changed, set new value in clipboard
     if (processedText !== text) {
-      console.log('ClipRefine: Text changed, setting clipboard:', processedText);
+      log('Text refined, setting clipboard:', processedText);
       event.preventDefault();
       event.clipboardData.setData('text/plain', processedText);
       

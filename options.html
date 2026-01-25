@@ -77,7 +77,7 @@
     </header>
 
     <!-- Global Toggle Section -->
-    <section class="mb-10">
+    <section class="mb-6">
       <div class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
@@ -91,6 +91,25 @@
         <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
           <input checked class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out" id="showToast" type="checkbox">
           <label class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300" for="showToast"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Console Log Toggle Section -->
+    <section class="mb-10">
+      <div class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-2xl">terminal</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg">Show Console Logs</h3>
+            <p class="text-sm text-gray-500">Display logs in browser console</p>
+          </div>
+        </div>
+        <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
+          <input class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out" id="showConsoleLog" type="checkbox">
+          <label class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300" for="showConsoleLog"></label>
         </div>
       </div>
     </section>

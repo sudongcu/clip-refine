@@ -5,7 +5,8 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Default settings
     const defaultSettings = {
       isGlobalActive: true,
-      showToast: true
+      showToast: true,
+      showConsoleLog: false
     };
 
     // Default rules (MVP preset)

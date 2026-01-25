@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupEventListeners() {
   // Toast settings
   document.getElementById('showToast').addEventListener('change', saveSettings);
+  document.getElementById('showConsoleLog').addEventListener('change', saveSettings);
 
   // 규칙 추가 버튼
   document.getElementById('addRuleBtn').addEventListener('click', () => {
@@ -44,6 +45,7 @@ async function loadSettings() {
   // Toast settings
   if (data.settings) {
     document.getElementById('showToast').checked = data.settings.showToast !== false;
+    document.getElementById('showConsoleLog').checked = data.settings.showConsoleLog === true;
   }
 
   // Rules list
@@ -54,10 +56,12 @@ async function loadSettings() {
 // Save settings
 async function saveSettings() {
   const showToast = document.getElementById('showToast').checked;
+  const showConsoleLog = document.getElementById('showConsoleLog').checked;
   
   const data = await chrome.storage.sync.get(['settings']);
   const settings = data.settings || {};
   settings.showToast = showToast;
+  settings.showConsoleLog = showConsoleLog;
   
   await chrome.storage.sync.set({ settings });
   showNotification('Settings saved');
