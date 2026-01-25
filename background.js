@@ -23,9 +23,9 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       },
       {
         id: 'rule_builtin_002',
-        name: 'Trim Whitespace',
-        description: 'Remove leading and trailing whitespace',
-        findPattern: '^\\s+|\\s+$',
+        name: 'Remove All Spaces',
+        description: 'Remove all whitespace characters (spaces, tabs, newlines)',
+        findPattern: '\\s+',
         replacePattern: '',
         isRegex: true,
         isActive: false,
@@ -33,10 +33,10 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       },
       {
         id: 'rule_builtin_003',
-        name: 'Clean URL Parameters',
-        description: 'Remove query parameters from URLs',
-        findPattern: '\\?.*$',
-        replacePattern: '',
+        name: 'Date Format: Hyphen to Dot',
+        description: 'Convert date format from YYYY-MM-DD to YYYY.MM.DD',
+        findPattern: '(\\d{4})-(\\d{2})-(\\d{2})',
+        replacePattern: '$1.$2.$3',
         isRegex: true,
         isActive: false,
         targetDomains: []
