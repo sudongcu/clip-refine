@@ -16,43 +16,47 @@
       margin: 0;
       padding: 0;
       width: 380px;
+      min-height: 400px;
+      max-height: 600px;
     }
   </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark">
-  <div class="w-full bg-white dark:bg-[#1e162e] shadow-2xl overflow-hidden border border-[#ebe7f3] dark:border-[#2d243d]">
-    <header class="flex items-center justify-between px-5 py-4 border-b border-solid border-[#ebe7f3] dark:border-[#2d243d] bg-white dark:bg-[#1e162e]">
+  <div class="w-full bg-white dark:bg-[#1e162e] shadow-2xl border border-[#ebe7f3] dark:border-[#2d243d] flex flex-col">
+    <header class="flex items-center justify-between px-5 py-4 border-b border-solid border-[#ebe7f3] dark:border-[#2d243d] bg-white dark:bg-[#1e162e] flex-shrink-0">
       <div class="flex items-center gap-2">
         <img src="icons/icon.png" alt="ClipRefine" class="size-8 rounded-lg">
         <h2 class="text-[#120d1b] dark:text-white text-lg font-extrabold tracking-tight">ClipRefine</h2>
       </div>
     </header>
     
-    <div class="p-5">
-      <div class="flex items-center justify-between gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 dark:bg-primary/10">
-        <div class="flex flex-col gap-0.5">
-          <p class="text-[#120d1b] dark:text-white text-sm font-bold uppercase tracking-wider">Status</p>
-          <p id="statusText" class="text-primary dark:text-primary text-lg font-bold">Service Active</p>
+    <div class="overflow-y-auto" style="max-height: 400px;">
+      <div class="p-5">
+        <div class="flex items-center justify-between gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 dark:bg-primary/10">
+          <div class="flex flex-col gap-0.5">
+            <p class="text-[#120d1b] dark:text-white text-sm font-bold uppercase tracking-wider">Status</p>
+            <p id="statusText" class="text-primary dark:text-primary text-lg font-bold">Service Active</p>
+          </div>
+          <label class="relative flex h-[34px] w-[60px] cursor-pointer items-center rounded-full border-none bg-[#ebe7f3] p-1 transition-all" id="toggleLabel">
+            <div class="h-full aspect-square rounded-full bg-white shadow-md transition-all" id="toggleKnob"></div>
+            <input id="globalToggle" checked class="invisible absolute" type="checkbox">
+          </label>
         </div>
-        <label class="relative flex h-[34px] w-[60px] cursor-pointer items-center rounded-full border-none bg-[#ebe7f3] p-1 transition-all" id="toggleLabel">
-          <div class="h-full aspect-square rounded-full bg-white shadow-md transition-all" id="toggleKnob"></div>
-          <input id="globalToggle" checked class="invisible absolute" type="checkbox">
-        </label>
+      </div>
+
+      <div class="px-5">
+        <h3 class="text-[#120d1b] dark:text-white text-sm font-bold leading-tight tracking-normal pb-3 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[18px]">rule</span>
+          Active Rules
+        </h3>
+      </div>
+
+      <div id="rulesList" class="flex flex-col gap-2 px-5 pb-6">
+        <p class="text-center py-8 text-gray-400 text-sm">Loading...</p>
       </div>
     </div>
 
-    <div class="px-5">
-      <h3 class="text-[#120d1b] dark:text-white text-sm font-bold leading-tight tracking-normal pb-3 flex items-center gap-2">
-        <span class="material-symbols-outlined text-primary text-[18px]">rule</span>
-        Active Rules
-      </h3>
-    </div>
-
-    <div id="rulesList" class="flex flex-col gap-2 px-5 pb-6">
-      <p class="text-center py-8 text-gray-400 text-sm">Loading...</p>
-    </div>
-
-    <div class="p-5 pt-0">
+    <div class="p-5 flex-shrink-0 bg-white dark:bg-[#1e162e] border-t border-[#ebe7f3] dark:border-[#2d243d]">
       <button id="openOptions" class="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#5A2EB0] to-[#8a4fff] text-white font-bold text-sm tracking-wide shadow-lg shadow-primary/30 hover:shadow-primary/40 active:scale-[0.98] transition-all">
         <span class="material-symbols-outlined text-[20px]">tune</span>
         RULE SETTINGS
