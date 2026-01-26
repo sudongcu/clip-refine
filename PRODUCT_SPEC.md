@@ -114,7 +114,7 @@ Designed for power users who need unlimited rules, advanced features, and seamle
 
 ### Feature Comparison Table
 
-| Feature | Free | Premium |
+| Feature | Free | Pro |
 |---------|------|---------|
 | **Custom Rules** | Max 5 Rules | ✅ Unlimited |
 | **Target Domains** | Max 3 Domains per Rule | ✅ Unlimited |

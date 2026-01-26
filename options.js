@@ -5,7 +5,40 @@ let editingRuleId = null;
 document.addEventListener('DOMContentLoaded', () => {
   loadSettings();
   setupEventListeners();
+  setupNavigation();
 });
+
+// Setup navigation between tabs
+function setupNavigation() {
+  const navItems = document.querySelectorAll('.nav-item');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const tabName = item.dataset.tab;
+      switchTab(tabName);
+    });
+  });
+}
+
+// Switch between tabs
+function switchTab(tabName) {
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+  // Update tab content
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  
+  if (tabName === 'dashboard') {
+    document.getElementById('dashboardTab').style.display = 'block';
+  } else if (tabName === 'license') {
+    document.getElementById('licenseTab').style.display = 'block';
+  }
+}
 
 // Setup event listeners
 function setupEventListeners() {
@@ -36,6 +69,10 @@ function setupEventListeners() {
     document.getElementById('importFile').click();
   });
   document.getElementById('importFile').addEventListener('change', importRules);
+
+  // License actions
+  document.getElementById('upgradeBtn').addEventListener('click', handleUpgrade);
+  document.getElementById('activateLicenseBtn').addEventListener('click', handleActivateLicense);
 }
 
 // Load settings
@@ -338,4 +375,29 @@ function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+// Handle upgrade button click
+function handleUpgrade() {
+  // TODO: Open pricing/payment page
+  showNotification('Upgrade feature coming soon!');
+  console.log('Upgrade to Pro clicked');
+}
+
+// Handle license activation
+async function handleActivateLicense() {
+  const licenseKey = document.getElementById('licenseKeyInput').value.trim();
+  
+  if (!licenseKey) {
+    showNotification('Please enter a license key');
+    return;
+  }
+
+  // TODO: Implement actual license validation
+  // For now, just show a notification
+  showNotification('License activation coming soon!');
+  console.log('Attempting to activate license:', licenseKey);
+  
+  // Clear input
+  document.getElementById('licenseKeyInput').value = '';
 }
