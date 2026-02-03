@@ -1,4 +1,6 @@
 // License management utility for FREE/PRO version control
+// [BETA] 현재 BETA 버전에서는 PRO 기능이 비활성화되어 있습니다.
+// PRO 버전 출시 시 이 파일의 함수들이 활성화됩니다.
 const LEMON_SQUEEZY_API_URL = 'https://api.lemonsqueezy.com/v1';
 
 // Feature limits for FREE version

@@ -127,12 +127,13 @@ function showToast(message) {
   toast.textContent = message;
   toast.style.cssText = `
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #333;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6B40C8;
     color: white;
     padding: 12px 20px;
-    border-radius: 6px;
+    border-radius: 8px;
     z-index: 999999;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -146,12 +147,12 @@ function showToast(message) {
     style.id = 'cliprefine-styles';
     style.textContent = `
       @keyframes cliprefine-fade-in {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
       }
       @keyframes cliprefine-fade-out {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-10px); }
+        from { opacity: 1; transform: translateX(-50%) translateY(0); }
+        to { opacity: 0; transform: translateX(-50%) translateY(10px); }
       }
     `;
     document.head.appendChild(style);

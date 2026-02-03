@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ClipRefine",
-  "version": "1.0.0",
-  "description": "Smart clipboard manager - Automatically refines copied text",
+  "name": "ClipRefine (BETA)",
+  "version": "0.9.0",
+  "description": "Smart clipboard manager - Automatically refines copied text (BETA)",
   "permissions": [
     "storage",
     "activeTab",
