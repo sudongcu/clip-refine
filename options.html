@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClipRefine Settings</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
   <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
+
     .material-symbols-outlined.fill {
       font-variation-settings: 'FILL' 1;
     }
+
     .toggle-checkbox:checked {
       right: 0;
       border-color: #6B40C8;
       background-image: none !important;
       background-color: #fff;
     }
-    .toggle-checkbox:checked + .toggle-label {
+
+    .toggle-checkbox:checked+.toggle-label {
       background-color: #6B40C8;
     }
+
     .small-toggle-checkbox {
       right: 1.375rem;
     }
+
     .small-toggle-checkbox:checked {
       right: 0.125rem;
       border-color: #6B40C8;
       background-image: none !important;
       background-color: #fff;
     }
+
     .small-toggle-checkbox:hover:not(:checked),
     .small-toggle-checkbox:focus:not(:checked),
     .toggle-checkbox:hover:not(:checked),
@@ -39,6 +47,7 @@
       border-color: #d1d5db !important;
       box-shadow: none !important;
     }
+
     .small-toggle-checkbox:checked:hover,
     .small-toggle-checkbox:checked:focus,
     .toggle-checkbox:checked:hover,
@@ -46,48 +55,59 @@
       border-color: #6B40C8 !important;
       box-shadow: none !important;
     }
+
     input[type="checkbox"].small-toggle-checkbox:focus,
     input[type="checkbox"].toggle-checkbox:focus {
       outline: none !important;
       box-shadow: none !important;
       border-color: inherit !important;
     }
+
     input[type="checkbox"].small-toggle-checkbox:checked:focus,
     input[type="checkbox"].toggle-checkbox:checked:focus {
       border-color: #6B40C8 !important;
     }
+
     .small-toggle-label {
       background-color: #e5e7eb;
     }
-    .small-toggle-checkbox:checked + .small-toggle-label {
+
+    .small-toggle-checkbox:checked+.small-toggle-label {
       background-color: #6B40C8;
     }
+
     .nav-item {
       color: #64748b;
       background-color: transparent;
     }
+
     .nav-item:hover {
       background-color: rgba(107, 64, 200, 0.05);
       color: #6B40C8;
     }
+
     .nav-item.active {
       background-color: rgba(107, 64, 200, 0.1);
       color: #6B40C8;
       font-weight: 600;
     }
+
     .dark .nav-item {
       color: #94a3b8;
     }
+
     .dark .nav-item:hover {
       background-color: rgba(107, 64, 200, 0.1);
       color: #a78bfa;
     }
+
     .dark .nav-item.active {
       background-color: rgba(107, 64, 200, 0.15);
       color: #a78bfa;
     }
   </style>
 </head>
+
 <body class="bg-background-light dark:bg-background-dark font-display text-[#120d1b] dark:text-white min-h-screen">
   <div class="flex min-h-screen">
     <!-- Left Navigation Bar -->
@@ -103,14 +123,17 @@
       <!-- Navigation Menu -->
       <div class="flex-1 p-4">
         <div class="space-y-1">
-          <button data-tab="dashboard" class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left">
+          <button data-tab="dashboard"
+            class="nav-item active w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left">
             <span class="material-symbols-outlined text-[20px]">settings</span>
             <span class="font-semibold text-sm">Rule Settings</span>
           </button>
-          <button data-tab="license" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left">
+          <button data-tab="license"
+            class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left">
             <span class="material-symbols-outlined text-[20px]">key</span>
             <span class="font-semibold text-sm">License</span>
-            <span class="ml-auto px-2 py-0.5 text-xs font-bold bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">FREE</span>
+            <span
+              class="ml-auto px-2 py-0.5 text-xs font-bold bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">FREE</span>
           </button>
         </div>
       </div>
@@ -122,120 +145,142 @@
     </nav>
 
     <!-- Main Content Area -->
-    <div class="flex-1 overflow-auto flex justify-center pl-20">
-      <div class="w-full px-8 py-12" style="max-width: 1044.5px;">
+    <div class="flex-1 overflow-auto">
         <!-- Rule Dashboard Tab -->
-        <div id="dashboardTab" class="tab-content w-full">
+        <div id="dashboardTab" class="tab-content px-8 py-12 mx-auto" style="max-width: 1044.5px;">
           <!-- Header -->
           <header class="mb-12">
             <h2 class="text-4xl font-black text-[#120d1b] dark:text-white mb-2">Rule Settings</h2>
-            <p class="text-gray-500 dark:text-gray-400 text-lg">Manage rules to automatically refine or transform clipboard content.</p>
+            <p class="text-gray-500 dark:text-gray-400 text-lg">Manage rules to automatically refine or transform
+              clipboard content.</p>
           </header>
 
-    <!-- Global Toggle Section -->
-    <section class="mb-6">
-      <div class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-            <span class="material-symbols-outlined text-2xl">notifications</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-lg">Show Toast Notifications</h3>
-            <p class="text-sm text-gray-500">Display a notification when text is transformed</p>
-          </div>
-        </div>
-        <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
-          <input checked class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out" id="showToast" type="checkbox">
-          <label class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300" for="showToast"></label>
-        </div>
-      </div>
-    </section>
+          <!-- Global Toggle Section -->
+          <section class="mb-6">
+            <div
+              class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-2xl">notifications</span>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg">Show Toast Notifications</h3>
+                  <p class="text-sm text-gray-500">Display a notification when text is transformed</p>
+                </div>
+              </div>
+              <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
+                <input checked
+                  class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out"
+                  id="showToast" type="checkbox">
+                <label
+                  class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"
+                  for="showToast"></label>
+              </div>
+            </div>
+          </section>
 
-    <!-- Console Log Toggle Section -->
-    <section class="mb-10">
-      <div class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
-            <span class="material-symbols-outlined text-2xl">terminal</span>
-          </div>
-          <div>
-            <h3 class="font-bold text-lg">Show Console Logs</h3>
-            <p class="text-sm text-gray-500">Display logs in browser console</p>
-          </div>
-        </div>
-        <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
-          <input class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out" id="showConsoleLog" type="checkbox">
-          <label class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300" for="showConsoleLog"></label>
-        </div>
-      </div>
-    </section>
+          <!-- Console Log Toggle Section -->
+          <section class="mb-10">
+            <div
+              class="bg-white dark:bg-[#1c142e] p-6 rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] shadow-sm flex items-center justify-between transition-all hover:shadow-md">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-2xl">terminal</span>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg">Show Console Logs</h3>
+                  <p class="text-sm text-gray-500">Display logs in browser console</p>
+                </div>
+              </div>
+              <div class="relative inline-block w-14 align-middle select-none transition duration-200 ease-in">
+                <input
+                  class="toggle-checkbox absolute block w-8 h-8 rounded-full bg-white border-4 border-gray-300 appearance-none cursor-pointer focus:ring-0 focus:ring-offset-0 checked:right-0 right-6 transition-all duration-300 ease-in-out"
+                  id="showConsoleLog" type="checkbox">
+                <label
+                  class="toggle-label block overflow-hidden h-8 rounded-full bg-gray-300 cursor-pointer transition-colors duration-300"
+                  for="showConsoleLog"></label>
+              </div>
+            </div>
+          </section>
 
-    <!-- Rules List Section -->
-    <section class="mb-8">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="text-xl font-bold flex items-center gap-2 text-[#120d1b] dark:text-white">
-          <span class="material-symbols-outlined text-primary">list_alt</span>
-          Rules List
-        </h3>
-        <button id="addRuleBtn" class="flex items-center gap-2 bg-gradient-to-r from-[#6B40C8] to-[#8a4fff] hover:shadow-primary/40 text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-primary/30 active:scale-95">
-          <span class="material-symbols-outlined text-[20px]">add</span>
-          <span>Add Rule</span>
-        </button>
-      </div>
+          <!-- Rules List Section -->
+          <section class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold flex items-center gap-2 text-[#120d1b] dark:text-white">
+                <span class="material-symbols-outlined text-primary">list_alt</span>
+                Rules List
+              </h3>
+              <button id="addRuleBtn"
+                class="flex items-center gap-2 bg-gradient-to-r from-[#6B40C8] to-[#8a4fff] hover:shadow-primary/40 text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-primary/30 active:scale-95">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                <span>Add Rule</span>
+              </button>
+            </div>
 
-      <div id="rulesList" class="bg-white dark:bg-[#1c142e] rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] overflow-hidden shadow-sm">
-        <p class="text-center py-8 text-gray-400">Loading...</p>
-      </div>
-    </section>
+            <div id="rulesList"
+              class="bg-white dark:bg-[#1c142e] rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] overflow-hidden shadow-sm">
+              <p class="text-center py-8 text-gray-400">Loading...</p>
+            </div>
+          </section>
 
-    <!-- Footer -->
-    <footer class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#d7cfe7] dark:border-[#332a4a]">
-      <p class="text-sm text-gray-500">Rules sync with your browser</p>
-      <div class="flex gap-3">
-        <button id="exportBtn" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2d2344] rounded-lg border border-[#d7cfe7] dark:border-[#332a4a] transition-all">
-          <span class="material-symbols-outlined text-[18px]">download</span>
-          Export Rules
-        </button>
-        <button id="importBtn" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2d2344] rounded-lg border border-[#d7cfe7] dark:border-[#332a4a] transition-all">
-          <span class="material-symbols-outlined text-[18px]">upload</span>
-          Import Rules
-        </button>
-        <input type="file" id="importFile" accept=".json" style="display: none;">
-      </div>
-    </footer>
+          <!-- Footer -->
+          <footer
+            class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#d7cfe7] dark:border-[#332a4a]">
+            <p class="text-sm text-gray-500">Rules sync with your browser</p>
+            <div class="flex gap-3">
+              <button id="exportBtn"
+                class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2d2344] rounded-lg border border-[#d7cfe7] dark:border-[#332a4a] transition-all">
+                <span class="material-symbols-outlined text-[18px]">download</span>
+                Export Rules
+              </button>
+              <button id="importBtn"
+                class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2d2344] rounded-lg border border-[#d7cfe7] dark:border-[#332a4a] transition-all">
+                <span class="material-symbols-outlined text-[18px]">upload</span>
+                Import Rules
+              </button>
+              <input type="file" id="importFile" accept=".json" style="display: none;">
+            </div>
+          </footer>
         </div>
 
         <!-- License Tab -->
-        <div id="licenseTab" class="tab-content w-full" style="display: none;">
+        <div id="licenseTab" class="tab-content px-8 py-12 mx-auto" style="display: none; max-width: 1044.5px;">
           <!-- Header -->
           <header class="mb-12">
             <div class="flex items-center gap-4 mb-2">
               <h2 class="text-4xl font-black text-[#120d1b] dark:text-white">License</h2>
-              <span class="px-5 py-2 text-lg font-bold bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-xl">FREE</span>
+              <span
+                class="px-5 py-2 text-lg font-bold bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-xl">FREE</span>
             </div>
             <p class="text-gray-500 dark:text-gray-400 text-lg">Check your plan status or upgrade to Pro.</p>
           </header>
 
           <!-- Upgrade Card -->
           <section class="mb-6">
-            <div class="bg-white dark:bg-[#1c142e] rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] overflow-hidden shadow-sm">
+            <div
+              class="bg-white dark:bg-[#1c142e] rounded-2xl border border-[#d7cfe7] dark:border-[#332a4a] overflow-hidden shadow-sm">
               <!-- Black Header Section -->
               <div style="background-color: #111827;" class="py-12 px-10 text-center">
                 <h3 class="text-4xl font-black text-white mb-6">Upgrade to Pro Lifetime</h3>
                 <p class="text-gray-300 text-base ">Unlimited rules, no domain limits, smart macros, and more.</p>
                 <p class="text-gray-400 text-lg mb-8">One-time payment. No monthly fees.</p>
-                <button id="upgradeBtn" style="background: linear-gradient(to right, #a855f7, #8b5cf6); min-width: 350px;" class="text-white px-24 py-5 rounded-full font-bold text-lg shadow-lg hover:opacity-90 transition-opacity mb-6">
+                <button id="upgradeBtn"
+                  style="background: linear-gradient(to right, #a855f7, #8b5cf6); min-width: 350px;"
+                  class="text-white px-24 py-5 rounded-full font-bold text-lg shadow-lg hover:opacity-90 transition-opacity mb-6">
                   Upgrade Now for $9.99
                 </button>
               </div>
-              
+
               <!-- License Input Section -->
               <div class="p-6 bg-white dark:bg-[#1c142e]">
                 <div class="flex flex-col gap-3">
                   <label class="text-base font-medium text-[#120d1b] dark:text-white">Already purchased?</label>
                   <div class="flex gap-4 items-center">
-                    <input id="licenseKeyInput" type="text" placeholder="Enter Your Key : XXXX-XXXX-XXXX-XXXX" style="min-width: 450px;" class="flex-1 border border-[#d7cfe7] dark:border-[#332a4a] rounded-lg px-4 py-3.5 text-[#120d1b] dark:text-white bg-white dark:bg-[#251b3d] focus:ring-2 focus:ring-primary focus:border-primary outline-none text-base">
-                    <button id="activateLicenseBtn" class="flex items-center gap-2 bg-gradient-to-r from-[#6B40C8] to-[#8a4fff] text-white px-5 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity whitespace-nowrap">
+                    <input id="licenseKeyInput" type="text" placeholder="Enter Your Key : XXXX-XXXX-XXXX-XXXX"
+                      style="min-width: 450px;"
+                      class="flex-1 border border-[#d7cfe7] dark:border-[#332a4a] rounded-lg px-4 py-3.5 text-[#120d1b] dark:text-white bg-white dark:bg-[#251b3d] focus:ring-2 focus:ring-primary focus:border-primary outline-none text-base">
+                    <button id="activateLicenseBtn"
+                      class="flex items-center gap-2 bg-gradient-to-r from-[#6B40C8] to-[#8a4fff] text-white px-5 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity whitespace-nowrap">
                       <span class="material-symbols-outlined text-[20px]">check</span>
                       <span>Activate</span>
                     </button>
@@ -247,9 +292,11 @@
 
           <!-- Feature Table -->
           <section class="mb-8">
-            <div class="bg-white dark:bg-[#1c142e] border border-[#d7cfe7] dark:border-[#332a4a] rounded-2xl overflow-hidden shadow-sm">
+            <div
+              class="bg-white dark:bg-[#1c142e] border border-[#d7cfe7] dark:border-[#332a4a] rounded-2xl overflow-hidden shadow-sm">
               <table class="w-full text-sm">
-                <thead style="background-color: #f9fafb;" class="dark:bg-[#251b3d] border-b border-[#d7cfe7] dark:border-[#332a4a]">
+                <thead style="background-color: #f9fafb;"
+                  class="dark:bg-[#251b3d] border-b border-[#d7cfe7] dark:border-[#332a4a]">
                   <tr>
                     <th class="px-6 py-3 text-left text-[#120d1b] dark:text-white font-semibold">FEATURE</th>
                     <th class="px-6 py-3 text-center text-gray-500 dark:text-gray-400 font-semibold w-40">FREE</th>
@@ -258,57 +305,94 @@
                 </thead>
                 <tbody class="divide-y divide-[#d7cfe7] dark:divide-[#332a4a]">
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Regex Complexity</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Full Support</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Full Support</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Regex
+                        Complexity</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Full Support</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Full Support</span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Toast Notifications</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Available</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Available</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Toast
+                        Notifications</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Available</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Available</span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Console Logging</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Available</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Available</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Console
+                        Logging</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Available</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Available</span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Import / Export</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #9ca3af;"><span class="material-symbols-outlined text-base align-middle" style="color: #ef4444;">cancel</span> Blocked</td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Available<br/><span class="text-xs" style="color: #6b7280;">(Backup & Share)</span></span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Import /
+                        Export</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #9ca3af;"><span
+                        class="material-symbols-outlined text-base align-middle" style="color: #ef4444;">cancel</span>
+                      Blocked</td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Available<br /><span class="text-xs"
+                          style="color: #6b7280;">(Backup & Share)</span></span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Custom Rules</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Custom
+                        Rules</span></td>
                     <td class="px-6 py-3 text-center" style="color: #6b7280;">Max 5 Rules</td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Unlimited</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Unlimited</span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Target Domains</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Target
+                        Domains</span></td>
                     <td class="px-6 py-3 text-center" style="color: #6b7280;">Max 3 Domains per Rule</td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Unlimited</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Unlimited</span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Popup Control</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #6b7280;">Global Switch Only<br/><span class="text-xs">(All rules on/off together)</span></td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Individual Toggles<br/><span class="text-xs" style="color: #6b7280;">(Toggle each rule instantly)</span></span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Popup
+                        Control</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #6b7280;">Global Switch Only<br /><span
+                        class="text-xs">(All rules on/off together)</span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Individual Toggles<br /><span class="text-xs"
+                          style="color: #6b7280;">(Toggle each rule instantly)</span></span></td>
                   </tr>
                   <tr>
-                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Profile System</span></td>
+                    <td class="px-6 py-3 font-semibold" style="color: #120d1b;"><span class="dark:text-white">Profile
+                        System</span></td>
                     <td class="px-6 py-3 text-center" style="color: #6b7280;">Single Default Mode</td>
-                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span class="material-symbols-outlined text-base align-middle" style="color: #22c55e;">check_circle</span> Multi-Profile Switching<br/><span class="text-xs" style="color: #6b7280;">(coding, editing, etc…)</span></span></td>
+                    <td class="px-6 py-3 text-center" style="color: #120d1b;"><span class="dark:text-white"><span
+                          class="material-symbols-outlined text-base align-middle"
+                          style="color: #22c55e;">check_circle</span> Multi-Profile Switching<br /><span class="text-xs"
+                          style="color: #6b7280;">(coding, editing, etc…)</span></span></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
         </div>
-      </div>
     </div>
   </div>
 
   <!-- Rule Modal -->ㅇ
-  <div id="ruleModal" class="fixed inset-0 flex items-center justify-center p-4 z-50" style="display: none; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
-    <div class="bg-white dark:bg-[#1f1631] w-full max-w-[560px] rounded-xl shadow-2xl overflow-hidden flex flex-col border border-white/10">
+  <div id="ruleModal" class="fixed inset-0 flex items-center justify-center p-4 z-50"
+    style="display: none; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+    <div
+      class="bg-white dark:bg-[#1f1631] w-full max-w-[560px] rounded-xl shadow-2xl overflow-hidden flex flex-col border border-white/10">
       <!-- Modal Header -->
       <div class="px-6 py-5 flex justify-between items-center border-b border-gray-100 dark:border-white/5">
         <h2 id="modalTitle" class="text-[#120d1b] dark:text-white text-xl font-bold leading-tight">Add New Rule</h2>
@@ -323,14 +407,18 @@
           <label class="text-[#120d1b] dark:text-gray-200 text-sm font-semibold leading-normal">
             Rule Name
           </label>
-          <input id="ruleName" class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none" placeholder="e.g., Remove Commas" type="text" required>
+          <input id="ruleName"
+            class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none"
+            placeholder="e.g., Remove Commas" type="text" required>
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[#120d1b] dark:text-gray-200 text-sm font-semibold leading-normal">
             Description
           </label>
-          <textarea id="ruleDescription" class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 py-3 text-base font-normal transition-all outline-none min-h-[100px] resize-none" placeholder="Describe what this rule does"></textarea>
+          <textarea id="ruleDescription"
+            class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 py-3 text-base font-normal transition-all outline-none min-h-[100px] resize-none"
+            placeholder="Describe what this rule does"></textarea>
         </div>
 
         <div class="flex flex-col gap-2">
@@ -339,18 +427,26 @@
               Find Pattern
             </label>
             <label class="flex items-center gap-2 cursor-pointer group">
-              <input id="isRegex" class="w-4 h-4 rounded border-[#d7cfe7] text-primary focus:ring-primary/20 bg-[#f9f8fc] dark:bg-white/5 dark:border-white/10 transition-all" type="checkbox">
-              <span class="text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">Use RegEx</span>
+              <input id="isRegex"
+                class="w-4 h-4 rounded border-[#d7cfe7] text-primary focus:ring-primary/20 bg-[#f9f8fc] dark:bg-white/5 dark:border-white/10 transition-all"
+                type="checkbox">
+              <span
+                class="text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-primary transition-colors">Use
+                RegEx</span>
             </label>
           </div>
-          <input id="findPattern" class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none" placeholder="String or pattern to find" type="text" required>
+          <input id="findPattern"
+            class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none"
+            placeholder="String or pattern to find" type="text" required>
         </div>
 
         <div class="flex flex-col gap-2">
           <label class="text-[#120d1b] dark:text-gray-200 text-sm font-semibold leading-normal">
             Replace With
           </label>
-          <input id="replacePattern" class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none" placeholder="Replacement text (leave empty to remove)" type="text">
+          <input id="replacePattern"
+            class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 px-4 h-12 text-base font-normal transition-all outline-none"
+            placeholder="Replacement text (leave empty to remove)" type="text">
         </div>
 
         <div class="flex flex-col gap-2">
@@ -361,7 +457,9 @@
             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
               <span class="material-symbols-outlined text-lg">language</span>
             </span>
-            <input id="targetDomains" class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 pl-11 pr-4 h-12 text-base font-normal transition-all outline-none" placeholder="example.com (leave empty for all sites)" type="text">
+            <input id="targetDomains"
+              class="w-full rounded-lg text-[#120d1b] dark:text-white border border-[#d7cfe7] dark:border-white/10 bg-[#f9f8fc] dark:bg-white/5 focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-[#664c9a]/60 pl-11 pr-4 h-12 text-base font-normal transition-all outline-none"
+              placeholder="example.com (leave empty for all sites)" type="text">
           </div>
         </div>
 
@@ -372,23 +470,30 @@
           </div>
           <label class="relative inline-flex items-center cursor-pointer">
             <input id="isActive" checked class="sr-only peer" type="checkbox">
-            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none dark:bg-gray-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none dark:bg-gray-700 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+            </div>
           </label>
         </div>
       </div>
 
       <!-- Modal Footer -->
-      <div class="px-6 py-6 bg-gray-50 dark:bg-white/5 flex gap-3 justify-end border-t border-gray-100 dark:border-white/5">
-        <button id="cancelBtn" class="px-6 py-2.5 rounded-lg text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/20 transition-all">
+      <div
+        class="px-6 py-6 bg-gray-50 dark:bg-white/5 flex gap-3 justify-end border-t border-gray-100 dark:border-white/5">
+        <button id="cancelBtn"
+          class="px-6 py-2.5 rounded-lg text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/20 transition-all">
           Cancel
         </button>
-        <button id="saveRuleBtn" class="px-8 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-primary to-[#7c3aed] hover:opacity-90 shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+        <button id="saveRuleBtn"
+          class="px-8 py-2.5 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-primary to-[#7c3aed] hover:opacity-90 shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
           Save
         </button>
       </div>
     </div>
   </div>
 
+  <script src="utils/license.js"></script>
   <script src="options.js"></script>
 </body>
+
 </html>

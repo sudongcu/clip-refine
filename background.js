@@ -9,6 +9,15 @@ chrome.runtime.onInstalled.addListener(async (details) => {
       showConsoleLog: false
     };
 
+    // Default license status (FREE version)
+    const defaultLicense = {
+      isPro: false,
+      licenseKey: null,
+      activatedAt: null,
+      expiresAt: null,
+      isActive: false
+    };
+
     // Default rules (MVP preset)
     const defaultRules = [
       {
@@ -46,10 +55,11 @@ chrome.runtime.onInstalled.addListener(async (details) => {
     // Save to storage
     await chrome.storage.sync.set({
       settings: defaultSettings,
-      rules: defaultRules
+      rules: defaultRules,
+      license: defaultLicense
     });
 
-    console.log('ClipRefine: Default settings and rules initialized');
+    console.log('ClipRefine: Default settings, rules, and license initialized');
   }
 });
 
