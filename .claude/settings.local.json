@@ -3,7 +3,10 @@
     "allow": [
       "Bash(dir:*)",
       "Bash(npm install:*)",
-      "Bash(node build.js:*)"
+      "Bash(node build.js:*)",
+      "Bash(node:*)",
+      "Bash(git -C \"d:\\\\dgseo\\\\programming\\\\extension\\\\clip-refine\" log --oneline -5)",
+      "Bash(git -C \"d:\\\\dgseo\\\\programming\\\\extension\\\\clip-refine\" add manifest.json \"docs/PRIVACY_POLICY.md\" \"docs/release/\" \"icons/icon - 128x128.png\")"
     ]
   }
 }
